@@ -26,8 +26,31 @@ a:active {outline: none;}
 }
 
 .ttt-cell{
+    box-sizing: border-box;
     aspect-ratio: 1;
     border: 5px solid black ;
     
     background-size: cover;
+}
+
+#start-screen{
+    box-sizing: border-box;
+    position:absolute;
+    display: flex;
+    flex-direction: column;
+    background-color: lawngreen;
+    padding: 10px;
+    width: 100vw;
+    align-self: center;
+    flex-wrap: wrap;
+    
+}
+#player-names{
+    display: flex;
+    align-self: center;
+    flex-wrap: wrap;
+}
+#start-button{
+    width: 100px;
+    align-self: center;
 }

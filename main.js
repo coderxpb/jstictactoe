@@ -1,5 +1,6 @@
 tttContainer = document.querySelector("#ttt-body");
 tttCells = Array.from(document.querySelectorAll(".ttt-cell"));
+startButton = document.querySelector("#start-button");
 //tttCells[0].style.backgroundImage = "url('')";
 const gameBoard = (()=>{
     const boardImg = [" ","xmark.png","omark.png"];
@@ -24,6 +25,7 @@ const gameBoard = (()=>{
 })();
 
 const Player = () =>{
+    let name = ""
     let turn = 0;
     return {turn}
 }
@@ -31,6 +33,8 @@ const Player = () =>{
 
 
 const gameController = (()=>{
+    let playing = false;
+
     const p1 = Player();
     const p2 = Player();
     let total = 0;
@@ -45,39 +49,46 @@ const gameController = (()=>{
         }
     }
     const onClickGB = (e)=>{
-        divIndex = e.target.getAttribute("data-ind");
-        console.log(divIndex);
+        if(playing){
+            divIndex = e.target.getAttribute("data-ind");
+            console.log(divIndex);
 
-        if(p1.turn==p2.turn){
-            if(gameBoard.gameBoardArr[divIndex]==0){
-                gameBoard.updateGameBoard(divIndex,1)
-                p1.turn += 1
-                total += 1;
-                console.log(gameBoard.gameBoardArr)
-                if(checkForWin(1)){
-                    console.log("P1 wins!")
-                    resetGame();
-                }
-                else {if(total==9){
-                    console.log("Draw!")
-                    resetGame();
-                }}
-            }
-        }
+            if (p1.turn == p2.turn) {
+                if (gameBoard.gameBoardArr[divIndex] == 0) {
+                    gameBoard.updateGameBoard(divIndex, 1)
+                    p1.turn += 1
+                    total += 1;
+                    console.log(gameBoard.gameBoardArr)
+                    if (checkForWin(1)) {
+                        console.log("P1 wins!")
+                        playing = false
+                    }
+                    else {
+                        if (total == 9) {
+                            console.log("Draw!")
+                            playing = false
 
-        else{
-            if (gameBoard.gameBoardArr[divIndex] == 0) {
-                gameBoard.updateGameBoard(divIndex, 2);
-                p2.turn += 1;
-                total +=1;
-                console.log(gameBoard.gameBoardArr);
-                if (checkForWin(2)) {
-                    console.log("P2 wins!");
-                    resetGame();
-                    //reset everything
+                        }
+                    }
                 }
             }
+
+            else {
+                if (gameBoard.gameBoardArr[divIndex] == 0) {
+                    gameBoard.updateGameBoard(divIndex, 2);
+                    p2.turn += 1;
+                    total += 1;
+                    console.log(gameBoard.gameBoardArr);
+                    if (checkForWin(2)) {
+                        console.log("P2 wins!");
+                        playing = false
+
+                        //reset everything
+                    }
+                }
+            }
         }
+        
     }
 
     const checkForWin = (pNo) =>{
@@ -109,6 +120,17 @@ const gameController = (()=>{
 
     tttCells.forEach(element => {
         element.addEventListener('click', onClickGB, false);
+    });
+
+    startButton.addEventListener('click',(e)=> {
+        let parentDisp = e.target.parentNode;
+        let pNames = parentDisp.querySelectorAll("input");
+
+        console.log(pNames[0].value);
+        playing=true;
+        p1.name = pNames[0].value;
+        p2.name = pNames[0].value;
+        resetGame();
     });
 })();
 
