@@ -11,12 +11,13 @@ let gameBoard = (()=>{
 
     const updateGameBoard = (ind,playerNo) =>{
         gameBoardArr[ind] = playerNo;
-        tttCells[ind].style.
-        
+        imageURL = "url('/imgs/" + boardImg[playerNo] + "')";
+        tttCells[ind].style.backgroundImage = imageURL;
     }
 
     return{
-        gameBoardArr
+        gameBoardArr,
+        updateGameBoard
     };
 })();
 
@@ -26,7 +27,9 @@ const Player = () =>{
 }
 
 let gameController = (()=>{
+    
     let onClick = (e)=>{
         console.log(e.target);
     }
 })();
+
