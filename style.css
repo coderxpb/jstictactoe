@@ -18,8 +18,8 @@ a:active {outline: none;}
     height: 100vh;
     background-color: blanchedalmond;
     display: grid;
-    grid-template-columns: repeat(3,minmax(40px,128px));
-    grid-template-rows: repeat(3, minmax(40px,128px));
+    grid-template-columns: repeat(3,minmax(20px,128px));
+    grid-template-rows: repeat(3, minmax(20px,128px));
     grid-gap: 10px;
     justify-content: center;
     align-content: center;
