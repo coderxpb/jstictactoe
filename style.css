@@ -28,6 +28,6 @@ a:active {outline: none;}
 .ttt-cell{
     aspect-ratio: 1;
     border: 5px solid black ;
-    background-image: url('/imgs/omark.png');
+    
     background-size: cover;
 }
