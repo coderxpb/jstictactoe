@@ -18,15 +18,16 @@ a:active {outline: none;}
     height: 100vh;
     background-color: blanchedalmond;
     display: grid;
-    grid-template-columns: repeat(3,40px);
-    grid-template-rows: repeat(3, 40px);
-    grid-gap: 20px;
+    grid-template-columns: repeat(3,minmax(40px,128px));
+    grid-template-rows: repeat(3, minmax(40px,128px));
+    grid-gap: 10px;
     justify-content: center;
     align-content: center;
 }
 
 .ttt-cell{
-    width: 50px;
-    height: 50px;
+    aspect-ratio: 1;
     border: 5px solid black ;
+    background-image: url('/imgs/omark.png');
+    background-size: cover;
 }
