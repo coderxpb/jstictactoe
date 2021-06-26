@@ -10,8 +10,7 @@ const gameBoard = (()=>{
 
     const updateGameBoard = (ind,playerNo) =>{
         gameBoardArr[ind] = playerNo;
-        //imageURL = "url('../imgs/" + boardImg[playerNo] + "')";
-        imageURL =  "url('imgs/xmark.png')";
+        imageURL = "url('imgs/" + boardImg[playerNo] + "')";
         tttCells[ind].style.backgroundImage = imageURL;
     }
 
