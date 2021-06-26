@@ -64,7 +64,7 @@ const gameController = (()=>{
                     if (checkForWin(1)) {
                         console.log("P1 wins!");
                         playing = false;
-                        playerWonContainer.textContent = "P1 Wins!";
+                        playerWonContainer.textContent = p1.name + " Wins!";
                         fsDisp.style.visibility = "visible";
                         tttContainer.style.visibility = "hidden";
                         playing = false;
@@ -92,7 +92,7 @@ const gameController = (()=>{
                     if (checkForWin(2)) {
                         console.log("P2 Wins!");
                         playing = false;
-                        playerWonContainer.textContent = "P2 Wins!";
+                        playerWonContainer.textContent = p1.name+" Wins!";
                         fsDisp.style.visibility = "visible";
                         tttContainer.style.visibility = "hidden";
                         playing = false;
