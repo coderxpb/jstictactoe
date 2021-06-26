@@ -1,6 +1,8 @@
 tttContainer = document.querySelector("#ttt-body");
+playerWonContainer = document.querySelector("#player-won");
 tttCells = Array.from(document.querySelectorAll(".ttt-cell"));
 startButton = document.querySelector("#start-button");
+fsDisp = document.querySelector("#fullscreen");
 //tttCells[0].style.backgroundImage = "url('')";
 const gameBoard = (()=>{
     const boardImg = [" ","xmark.png","omark.png"];
@@ -60,13 +62,21 @@ const gameController = (()=>{
                     total += 1;
                     console.log(gameBoard.gameBoardArr)
                     if (checkForWin(1)) {
-                        console.log("P1 wins!")
-                        playing = false
+                        console.log("P1 wins!");
+                        playing = false;
+                        playerWonContainer.textContent = "P1 Wins!";
+                        fsDisp.style.visibility = "visible";
+                        tttContainer.style.visibility = "hidden";
+                        playing = false;
                     }
                     else {
                         if (total == 9) {
-                            console.log("Draw!")
-                            playing = false
+                            console.log("Draw!");
+                            playing = false;
+                            playerWonContainer.textContent = "Draw!";
+                            fsDisp.style.visibility = "visible";
+                            tttContainer.style.visibility = "hidden";
+                            playing = false;
 
                         }
                     }
@@ -80,8 +90,12 @@ const gameController = (()=>{
                     total += 1;
                     console.log(gameBoard.gameBoardArr);
                     if (checkForWin(2)) {
-                        console.log("P2 wins!");
-                        playing = false
+                        console.log("P2 Wins!");
+                        playing = false;
+                        playerWonContainer.textContent = "P2 Wins!";
+                        fsDisp.style.visibility = "visible";
+                        tttContainer.style.visibility = "hidden";
+                        playing = false;
 
                         //reset everything
                     }
@@ -124,12 +138,15 @@ const gameController = (()=>{
 
     startButton.addEventListener('click',(e)=> {
         let parentDisp = e.target.parentNode;
+        let fullScreenDisp = parentDisp.parentNode;
         let pNames = parentDisp.querySelectorAll("input");
 
         console.log(pNames[0].value);
         playing=true;
         p1.name = pNames[0].value;
         p2.name = pNames[0].value;
+        fullScreenDisp.style.visibility = "hidden";
+        tttContainer.style.visibility = "visible";
         resetGame();
     });
 })();
