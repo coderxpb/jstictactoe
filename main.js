@@ -1,8 +1,8 @@
-tttContainer = document.querySelector("#ttt-body");
-playerWonContainer = document.querySelector("#player-won");
-tttCells = Array.from(document.querySelectorAll(".ttt-cell"));
-startButton = document.querySelector("#start-button");
-fsDisp = document.querySelector("#fullscreen");
+const tttContainer = document.querySelector("#ttt-body");
+const playerWonContainer = document.querySelector("#player-won");
+const tttCells = Array.from(document.querySelectorAll(".ttt-cell"));
+const startButton = document.querySelector("#start-button");
+const fsDisp = document.querySelector("#fullscreen");
 //tttCells[0].style.backgroundImage = "url('')";
 const gameBoard = (()=>{
     const boardImg = [" ","xmark.png","omark.png"];
@@ -96,13 +96,10 @@ const gameController = (()=>{
                         fsDisp.style.visibility = "visible";
                         tttContainer.style.visibility = "hidden";
                         playing = false;
-
-                        //reset everything
                     }
                 }
             }
-        }
-        
+        }  
     }
 
     const checkForWin = (pNo) =>{
@@ -113,6 +110,7 @@ const gameController = (()=>{
                 }
             }
         }
+
         for (let i = 0; i < 7; i+=3) {
             if (gameBoard.gameBoardArr[i] == pNo) {
                 if (gameBoard.gameBoardArr[i + 1] == pNo && gameBoard.gameBoardArr[i + 2] == pNo) {
@@ -120,6 +118,7 @@ const gameController = (()=>{
                 }
             }
         }
+
         if(gameBoard.gameBoardArr[4]==pNo){
             if (gameBoard.gameBoardArr[0] == pNo && gameBoard.gameBoardArr[8] == pNo) {
                 return true;
@@ -128,7 +127,6 @@ const gameController = (()=>{
                 return true;
             }
         }
-        
         return false;
     }
 
